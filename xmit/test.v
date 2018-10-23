@@ -43,7 +43,7 @@ module test(input clk, output RS232_Tx,input RS232_Rx, input PMOD10,output PMOD1
    
    xmit x(clk,reset,char,sendchar,RS232_Tx,busy);
    
-`ifdef SLOW  // This is for "slow" characters; makes the LEDs pretty and easy to watch on scope
+`ifndef FAST  // The code below is for "slow" characters; makes the LEDs pretty and easy to watch on scope
 // Use the baudrate generator to make roughly 600uS tick
    brg #(.BAUD(100)) ticker(clk,por,tick);
 
